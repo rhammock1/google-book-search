@@ -3,6 +3,7 @@ import Header from './Header/Header';
 import './App.css';
 import Search from './Search/Search';
 import BookList from './BookList/BookList';
+import Loading from './Loading/Loading';
 
 
 const BOOKS = [
@@ -25,7 +26,7 @@ class App extends React.Component {
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.handlePrintTypeChange = this.handlePrintTypeChange.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
-
+    this.handleSearchButton = this.handleSearchButton.bind(this);
   }
 
   fetchBookResults(searchTerm, printType, bookType) {
@@ -62,23 +63,40 @@ class App extends React.Component {
   handleSearchButton(event) {
     event.preventDefault();
     console.log('search button clicked');
-    let searchTerm = encodeURI(this.state.search);
+    let searchTerm = this.state.search;
     let printType = this.state.printType;
-    let bookType = this.state.bookType;
+    let bookType = this.state.filter;
+    this.fetchBookResults(searchTerm, printType, bookType)
   }
   
   render() {
-    return(
-      <>
-        <Header />
-        <Search 
-          onSearchChange={this.handleSearchChange}
-          onPrintTypeChange={this.handlePrintTypeChange}
-          onFilterChange={this.handleFilterChange}
-          handleSearchButton={this.handleSearchButton} />
-        <BookList books={BOOKS} />
-      </>
+
+    if(this.state.loading) {
+      return (
+        <>
+          <Header />
+          <Search 
+            onSearchChange={this.handleSearchChange}
+            onPrintTypeChange={this.handlePrintTypeChange}
+            onFilterChange={this.handleFilterChange}
+            handleSearchButton={this.handleSearchButton} />
+          <Loading />
+        </>
+      )
+    } else {
+        return(
+          <>
+            <Header />
+            <Search 
+              onSearchChange={this.handleSearchChange}
+              onPrintTypeChange={this.handlePrintTypeChange}
+              onFilterChange={this.handleFilterChange}
+              handleSearchButton={this.handleSearchButton} />
+            <BookList books={BOOKS} />
+          </>
     )
+    }
+    
     
   }
 }

@@ -18,7 +18,7 @@ const Search = function(props) {
           <option value='magazines'>Magazines</option>
         </select>
         <label htmlFor='filter'>Book Type: </label>
-        <select id='filter' name='filter'onChange={(event) => props.onFilterChange(event)}>
+        <select id='filter' name='filter' onChange={(event) => props.onFilterChange(event)}>
           <option value=''></option>
           <option value='partial'>Partial view</option>
           <option value='full'>Full view</option>
