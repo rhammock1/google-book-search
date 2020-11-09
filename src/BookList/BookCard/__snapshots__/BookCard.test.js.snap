@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component renders the UI as expected 1`] = `
+<div
+  className="book-card-container"
+>
+  <h2>
+    
+  </h2>
+  <img
+    alt=""
+  />
+  <p>
+    Author: 
+  </p>
+  <p>
+    Price: 
+  </p>
+  <p />
+</div>
+`;
