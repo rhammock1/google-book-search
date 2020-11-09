@@ -1,25 +1,22 @@
-import logo from './logo.svg';
+import React from 'react';
+import Header from './Header/Header';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const BOOKS = [
+  {title:'random title1', description:'random description', price:'$35.00', cover:'https://nice-assets.s3-accelerate.amazonaws.com/smart_templates/e639b9513adc63d37ee4f577433b787b/assets/wn5u193mcjesm2ycxacaltq8jdu68kmu.jpg'},{title:'random title2', description:'random description', price:'$15.00', cover:'https://nice-assets.s3-accelerate.amazonaws.com/smart_templates/e639b9513adc63d37ee4f577433b787b/assets/wn5u193mcjesm2ycxacaltq8jdu68kmu.jpg'},{title:'random title3', description:'random description', price:'$350.00', cover:'https://nice-assets.s3-accelerate.amazonaws.com/smart_templates/e639b9513adc63d37ee4f577433b787b/assets/wn5u193mcjesm2ycxacaltq8jdu68kmu.jpg'}
+];
+
+// API KEY: AIzaSyBOv743t053Kv1vW5VRRaWaK3zQHK6fkgU
+class App extends React.Component {
+
+
+  render() {
+    return(
+      <Header />
+    )
+    
+  }
 }
 
 export default App;
