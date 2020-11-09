@@ -14,9 +14,18 @@ class App extends React.Component {
 
   state = {
     books:[],
-    searchTerm:'',
+    search:'',
+    printType:'',
+    filter:'',
     loading:false,
     error:null
+  }
+  constructor(props) {
+    super(props);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.handlePrintTypeChange = this.handlePrintTypeChange.bind(this);
+    this.handleFilterChange = this.handleFilterChange.bind(this);
+
   }
 
   fetchBookResults(searchTerm, printType, bookType) {
@@ -37,17 +46,36 @@ class App extends React.Component {
     })
     .catch(error => this.setState({error, loading:false}));
   }
-  handleSearchButton(event) {
-    event.preventDefault();
-    
-    console.log('Search button clicked');
+  handleSearchChange (event) {
+    console.log('state changed');
+    this.setState({search: event.target.value});
     
   }
+  handlePrintTypeChange(event) {
+    console.log('state changed');
+    this.setState({printType:event.target.value});
+  }
+  handleFilterChange(event) {
+    console.log('state changed');
+    this.setState({filter:event.target.value});
+  }
+  handleSearchButton(event) {
+    event.preventDefault();
+    console.log('search button clicked');
+    let searchTerm = encodeURI(this.state.search);
+    let printType = this.state.printType;
+    let bookType = this.state.bookType;
+  }
+  
   render() {
     return(
       <>
         <Header />
-        <Search handleSearchButton={this.handleSearchButton} />
+        <Search 
+          onSearchChange={this.handleSearchChange}
+          onPrintTypeChange={this.handlePrintTypeChange}
+          onFilterChange={this.handleFilterChange}
+          handleSearchButton={this.handleSearchButton} />
         <BookList books={BOOKS} />
       </>
     )

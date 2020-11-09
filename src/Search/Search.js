@@ -1,23 +1,25 @@
 import React from 'react';
-import Filter from './Filter/Filter';
 
-class Search extends React.Component {
 
-  render() {
+
+  
+const Search = function(props) {
     return (
       <form className='search-form'>
         <fieldset>
           <legend>Search Options</legend>
         <label htmlFor='search'>Search Title: </label>
-        <input id='search' name='search' type='text' placeholder='e.g. The Island' required />
-        <label htmlFor='prinType'>Print Type: </label>
-        <select id='prinType' name='printType'>
+        <input id='search' name='search' type='text' placeholder='e.g. The Island' onChange={(event) => props.onSearchChange(event)}required />
+        <label htmlFor='printType'>Print Type: </label>
+        <select id='printType' name='printType' onChange={(event) => props.onPrintTypeChange(event)}>
+          <option value=''></option>
           <option value='all'>All</option>
           <option value='books'>Books</option>
           <option value='magazines'>Magazines</option>
         </select>
         <label htmlFor='filter'>Book Type: </label>
-        <select id='filter' name='filter'>
+        <select id='filter' name='filter'onChange={(event) => props.onFilterChange(event)}>
+          <option value=''></option>
           <option value='partial'>Partial view</option>
           <option value='full'>Full view</option>
           <option value='free-ebooks'>Free eBooks</option>
@@ -30,6 +32,5 @@ class Search extends React.Component {
       )
   }
   
-}
 
 export default Search;
