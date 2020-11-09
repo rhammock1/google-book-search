@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component renders the UI as expected 1`] = `
+<form
+  className="filter-form"
+>
+  <fieldset>
+    Filter Options
+  </fieldset>
+  <label
+    htmlFor="print-type"
+  >
+    Print Type: 
+  </label>
+</form>
+`;

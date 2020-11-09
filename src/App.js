@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Header/Header';
 import './App.css';
 import Search from './Search/Search';
+import Filter from './Filter/Filter';
 
 
 // const BOOKS = [
@@ -17,7 +18,7 @@ class App extends React.Component {
       <>
         <Header />
         <Search />
-        
+        <Filter />
       </>
     )
     
