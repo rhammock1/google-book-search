@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component renders the UI as expected 1`] = `
+<div
+  className="search-bar"
+>
+  <label
+    htmlFor="search"
+  >
+    Search:
+  </label>
+  <input
+    id="search"
+    name="search"
+    placeholder="e.g. The Island"
+    required={true}
+    type="text"
+  />
+  <button
+    type="click"
+  >
+    Search
+  </button>
+</div>
+`;

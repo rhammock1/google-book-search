@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header/Header';
 import './App.css';
+import Search from './Search/Search';
 
 
 // const BOOKS = [
@@ -13,7 +14,11 @@ class App extends React.Component {
 
   render() {
     return(
-      <Header />
+      <>
+        <Header />
+        <Search />
+        
+      </>
     )
     
   }
