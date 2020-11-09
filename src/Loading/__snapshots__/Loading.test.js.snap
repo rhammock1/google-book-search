@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading component renders the UI as expected 1`] = `
+<div
+  className="loading-container"
+>
+  <img
+    alt="Loading screen"
+    id="loading"
+    src="https://media.giphy.com/media/QsZxCOejpGL9U48kyo/giphy.gif"
+  />
+</div>
+`;

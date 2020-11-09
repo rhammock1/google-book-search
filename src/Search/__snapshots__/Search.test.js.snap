@@ -16,19 +16,24 @@ exports[`Search component renders the UI as expected 1`] = `
     <input
       id="search"
       name="search"
+      onChange={[Function]}
       placeholder="e.g. The Island"
       required={true}
       type="text"
     />
     <label
-      htmlFor="prinType"
+      htmlFor="printType"
     >
       Print Type: 
     </label>
     <select
-      id="prinType"
+      id="printType"
       name="printType"
+      onChange={[Function]}
     >
+      <option
+        value=""
+      />
       <option
         value="all"
       >
@@ -53,7 +58,11 @@ exports[`Search component renders the UI as expected 1`] = `
     <select
       id="filter"
       name="filter"
+      onChange={[Function]}
     >
+      <option
+        value=""
+      />
       <option
         value="partial"
       >
@@ -81,6 +90,7 @@ exports[`Search component renders the UI as expected 1`] = `
       </option>
     </select>
     <button
+      onClick={[Function]}
       type="click"
     >
       Search

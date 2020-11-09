@@ -4,6 +4,7 @@ import './App.css';
 import Search from './Search/Search';
 import BookList from './BookList/BookList';
 import Loading from './Loading/Loading';
+import Error from './Error/Error';
 
 
 const BOOKS = [
@@ -17,7 +18,7 @@ class App extends React.Component {
     books:[],
     search:'',
     printType:'',
-    filter:'',
+    filter:'all',
     loading:false,
     error:null
   }
@@ -27,6 +28,7 @@ class App extends React.Component {
     this.handlePrintTypeChange = this.handlePrintTypeChange.bind(this);
     this.handleFilterChange = this.handleFilterChange.bind(this);
     this.handleSearchButton = this.handleSearchButton.bind(this);
+    this.handleClearError = this.handleClearError.bind(this);
   }
 
   fetchBookResults(searchTerm, printType, bookType) {
@@ -41,11 +43,15 @@ class App extends React.Component {
     .then(res => res.ok ? res.json() : Promise.reject("Couldn't get the data, Boss!"))
     .then(data => {
       console.log(data)
-      this.setState( {
+      this.setState( { books:data.items,
         loading:false
       })
     })
     .catch(error => this.setState({error, loading:false}));
+  }
+  handleClearError() {
+    console.log('clear clicked');
+    this.setState({error:null});
   }
   handleSearchChange (event) {
     console.log('state changed');
@@ -83,7 +89,20 @@ class App extends React.Component {
           <Loading />
         </>
       )
-    } else {
+    } else if(this.state.error) {
+      return (
+        <>
+          <Header />
+          <Search 
+            onSearchChange={this.handleSearchChange}
+            onPrintTypeChange={this.handlePrintTypeChange}
+            onFilterChange={this.handleFilterChange}
+            handleSearchButton={this.handleSearchButton} />
+          <Error error={this.state.error} onClearError={this.handleClearError}/>
+        </>
+      )
+    }
+    else {
         return(
           <>
             <Header />
@@ -92,7 +111,7 @@ class App extends React.Component {
               onPrintTypeChange={this.handlePrintTypeChange}
               onFilterChange={this.handleFilterChange}
               handleSearchButton={this.handleSearchButton} />
-            <BookList books={BOOKS} />
+            <BookList books={this.state.books} />
           </>
     )
     }
