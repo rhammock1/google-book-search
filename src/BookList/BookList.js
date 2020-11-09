@@ -5,10 +5,10 @@ const BookList = function(props) {
 
   return(
     <div className='book-list-container'>
-      {/* Need to map through state.books to create book card for ea book */}
+      {/* Need to create unique id */}
       {props.books.map((book) => {
         return(
-          <BookCard book={book}/>
+          <BookCard key={book.id} book={book}/>
         )
       })}
       
