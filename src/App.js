@@ -7,18 +7,13 @@ import Loading from './Loading/Loading';
 import Error from './Error/Error';
 
 
-const BOOKS = [
-  {id: 1, title:'random title1', description:'random description', price:'$35.00', cover:'https://nice-assets.s3-accelerate.amazonaws.com/smart_templates/e639b9513adc63d37ee4f577433b787b/assets/wn5u193mcjesm2ycxacaltq8jdu68kmu.jpg'},{id:2, title:'random title2', description:'random description', price:'$15.00', cover:'https://nice-assets.s3-accelerate.amazonaws.com/smart_templates/e639b9513adc63d37ee4f577433b787b/assets/wn5u193mcjesm2ycxacaltq8jdu68kmu.jpg'},{id:3, title:'random title3', description:'random description', price:'$350.00', cover:'https://nice-assets.s3-accelerate.amazonaws.com/smart_templates/e639b9513adc63d37ee4f577433b787b/assets/wn5u193mcjesm2ycxacaltq8jdu68kmu.jpg'}
-];
-
-
 class App extends React.Component {
 
   state = {
     books:[],
     search:'',
-    printType:'',
-    filter:'all',
+    printType:'all',
+    filter:'',
     loading:false,
     error:null
   }
@@ -37,7 +32,7 @@ class App extends React.Component {
       loading:true
     });
     // need to fetch, baseURL- searchTerm-filters- options
-    let baseURL = `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&filter=${bookType}&printType=${printType}&key=${apiKey}`
+    let baseURL = !this.state.bookType === '' ? `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&filter=${bookType}&printType=${printType}&key=${apiKey}` : `https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&printType=${printType}&key=${apiKey}`
 
     fetch(baseURL)
     .then(res => res.ok ? res.json() : Promise.reject("Couldn't get the data, Boss!"))

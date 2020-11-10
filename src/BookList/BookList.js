@@ -10,7 +10,7 @@ const BookList = function(props) {
         let title = book.volumeInfo.title;
         let author = book.volumeInfo.authors;
         let desc = book.volumeInfo.description;
-        let price = book.saleInfo.listPrice.amount;
+        let price = !book.saleInfo.listPrice ? "Couldn't find it, Boss" : book.saleInfo.listPrice.amount;
         let thumbnail = book.volumeInfo.imageLinks.smallThumbnail;
         return(
           <BookCard key={index} author={author} description={desc} price={price} thumbnail={thumbnail} book={book} title={title}/>
